@@ -37,7 +37,6 @@ export default function SaveBtn(props) {
             const newBtnType = (prevBtnType.btnText.toLowerCase() === "save")? removeBtn : saveBtn;
             return newBtnType;
         });
-        console.log("update complete")
 
         // update showMsg
         props.setShowSaveMsg((prevShowSaveMsg) => {
@@ -46,7 +45,6 @@ export default function SaveBtn(props) {
     };
 
     useEffect(() => {
-        console.log("show msg")
         props.setShowSaveMsg(prevShowSaveMsg => {
             return prevShowSaveMsg &&
             savedMods.includes(props.modCode) &&

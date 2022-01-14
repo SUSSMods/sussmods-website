@@ -8,9 +8,9 @@ function ModuleInfo() {
 
   // get mod code to request data for
   const { modCode } = useParams();
-  const url = `http://localhost:8000/module-info?code=${modCode}`
+  const url = `https://sussmods.herokuapp.com/module-info/${modCode}`
 
-  const [data, setData] = useState([]);
+  const [modInfo, setmodInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -30,7 +30,7 @@ function ModuleInfo() {
               if (data.length < 1)  {
                 throw new Error("Module not found");
               } else {
-                setData(data);
+                setmodInfo(data["mod_info"]);
                 setError(null);
                 setIsLoading(false);
               }
@@ -39,11 +39,9 @@ function ModuleInfo() {
             setError(err.message);
             setIsLoading(false);
           })
-          return { data, isLoading, error }
+          return { modInfo, isLoading, error }
   }, [url]);
   
-  const [mod] = data;
-
   return (
     <>
       {isLoading &&
@@ -57,23 +55,23 @@ function ModuleInfo() {
       {!isLoading && !error &&
         <>
           <ModuleMainInfo
-          modName={mod.name}
-          modCode={mod.code}
-          modDesc={mod.desc}
-          modTopics={mod.topics}
-          modOutcomes={mod.learningOutcomes}
-          modTextbook={mod.textbook}
+          modName={modInfo.name}
+          modCode={modInfo.code}
+          modDesc={modInfo.desc}
+          modTopics={modInfo.topics}
+          modOutcomes={modInfo.learningOutcomes}
+          modTextbook={modInfo.textbook}
           /> 
 
           <div className="col-2 module-info-side">
           
             <ModuleSideInfo
-            modCu={mod.cu}
-            modSem={mod.sem}
-            modLevel={mod.level}
-            modPrereqs={mod.prerequisites}
-            modLang={mod.language}
-            modTimeTable={mod.timeTable}
+            modCu={modInfo.cu}
+            modSem={modInfo.sem}
+            modLevel={modInfo.level}
+            modPrereqs={modInfo.prerequisites}
+            modLang={modInfo.language}
+            modTimeTable={modInfo.timeTable}
             />
 
             <SaveBtn

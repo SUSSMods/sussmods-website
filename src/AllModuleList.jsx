@@ -9,7 +9,7 @@ export default function AllModuleList() {
     const [currentPage, setCurrentPage] = useState(1);
     const [modsPerPage] = useState(10);
 
-    const { mods, isLoading, Error } = useFetchMods('http://localhost:80/modules')
+    const { mods, isLoading, Error } = useFetchMods('https://sussmods.herokuapp.com/')
     
     // get curr page mods
     const indexOfLastMod = currentPage * modsPerPage;
