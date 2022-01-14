@@ -29,12 +29,12 @@ export default function SearchBar({ data }) {
         setSearchInput("");
     }
 
-    function handleSearchSubmit() {
-        //
-        console.log(searchInput);
-        setSearchInput("")
-        return false;
-    }
+    // function handleSearchSubmit() {
+    //     //
+    //     console.log(searchInput);
+    //     setSearchInput("")
+    //     return false;
+    // }
 
     return (
         <>

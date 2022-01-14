@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import ModuleCard from './ModuleCard';
 import PaginationBar from './PaginationBar'
 import { SavedModulesContext } from './SavedModulesContext';
-// import useFetch from './useFetch';
 import useFetchMods from './useFetchMods';
 import { Link } from 'react-router-dom';
 
@@ -19,8 +18,7 @@ export default function SavedModuleList() {
     });
 
     // fetch data
-    // const { data: mods, isLoading, Error } = useFetch(`http://localhost:8000/modules?${params.toString()}`);
-    const { mods, isLoading, Error } = useFetchMods(`http://localhost:80/modules?${params.toString()}`);
+    const { mods, isLoading, Error } = useFetchMods(`https://sussmods.herokuapp.com/modules?${params.toString()}`);
 
     // get curr page mods
     const indexOfLastMod = currentPage * modsPerPage;
