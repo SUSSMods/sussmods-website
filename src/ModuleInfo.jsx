@@ -16,8 +16,6 @@ function ModuleInfo() {
 
   const [showSaveMsg, setShowSaveMsg] = useState(false);
 
-  // const { savedMods } = useContext(SavedModulesContext);
-
   useEffect(() => {
     fetch(url)  
           .then(res => {
