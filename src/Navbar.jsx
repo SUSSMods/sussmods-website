@@ -1,6 +1,7 @@
 import React from 'react';
 import NavItem from './NavItem';
 import { Link } from "react-router-dom";
+import logo from './images/sussmods-logo-secondary.png'
 
 export default function Navbar() {
     return (
@@ -8,7 +9,7 @@ export default function Navbar() {
             <div className="sidenav">
                 <Link to="/">
                     <img className="sussmods-logo"
-                        src="/images/sussmods-logo-secondary.png"
+                        src={logo}
                         alt="SUSSMods Logo" />
                 </Link>
 
