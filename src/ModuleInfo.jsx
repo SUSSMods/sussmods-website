@@ -17,28 +17,34 @@ function ModuleInfo() {
   const [showSaveMsg, setShowSaveMsg] = useState(false);
 
   useEffect(() => {
-    fetch(url)  
-          .then(res => {
-              if(!res.ok) {
-                  throw new Error("Unable to request data for this resource");
-              }
-              return res.json();
-          })
-          .then(data => {
-              if (data.length < 1)  {
-                throw new Error("Module not found");
-              } else {
-                setmodInfo(data["mod_info"]);
-                setError(null);
-                setIsLoading(false);
-              }
-          })
-          .catch(err => {
-            setError(err.message);
-            setIsLoading(false);
-          })
-          return { modInfo, isLoading, error }
-  }, [url]);
+    let isMounted = true;
+    const fetchData = async () => {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) {
+          throw Error("Unable to request data for this resource");
+        }
+        if (isMounted) {
+          const data = await res.json();
+          if (data.length < 1) {
+            throw Error("Module not found");
+          }
+          setmodInfo(data.mod_info);
+          setIsLoading(false);
+          setError(null);
+        }
+      } catch(err) {
+        setIsLoading(false);
+        setError(err.message);
+        console.log(err.message);
+      }
+    };
+
+    fetchData();
+    return () => {
+      isMounted = false;
+    }
+  }, [url])
   
   return (
     <>

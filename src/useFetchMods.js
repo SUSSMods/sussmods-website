@@ -7,24 +7,31 @@ export default function useFetchMods(url) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(url)  
-            .then(res => {
-                if(!res.ok) {
+        let isMounted = true; // prevent set state when unmounted warning
+        const fetchData = async () => {
+            try {
+                const res = await fetch(url);
+                if (!res.ok) {
                     throw Error("Unable to request data for this resource")
+                } 
+                if (isMounted) {
+                    const data = await res.json();
+                    setMods(data.modules);
+                    setIsLoading(false);
+                    setError(null);
                 }
-                return res.json();
-            })
-            .then(data => {
-                setMods(data.modules);
-                setIsLoading(false);
-                setError(null);
-            })
-            .catch(err => {
+            } catch (err) {
                 setIsLoading(false);
                 setError(err.message);
-                console.log(err.message)
-            })
-    }, [url]);
+                console.log(err.message);
+            }
+        };
+        
+        fetchData();
+        return () => {
+            isMounted = false;
+        }
+    }, [url])
     
     return { mods, isLoading, error }
 }
