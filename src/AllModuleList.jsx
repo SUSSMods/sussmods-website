@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import ModuleCard from './ModuleCard';
 import PaginationBar from './PaginationBar'
 // import useFetch from './useFetch'
-import useFetchMods from './useFetchMods'
+// import useFetchMods from './useFetchMods'
+import data from './data';
 
 export default function AllModuleList() {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [modsPerPage] = useState(10);
 
-    const { mods, isLoading, Error } = useFetchMods('https://sussmods.herokuapp.com/')
+    // const { mods, isLoading, Error } = useFetchMods('https://sussmods.herokuapp.com/')
+
+    const mods = data["modules"]
     
     // get curr page mods
     const indexOfLastMod = currentPage * modsPerPage;
@@ -21,13 +24,13 @@ export default function AllModuleList() {
         <>
             <div className="col-6 modules-container">
 
-                {isLoading && 
+                {/* {isLoading && 
                 <h2>Loading...</h2>
                 }
 
                 {Error && 
                 <h2>Error. Please try again later.</h2>
-                }
+                } */}
 
                  {   currentMods.map(mod => (
                         <ModuleCard

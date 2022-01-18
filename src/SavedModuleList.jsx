@@ -2,8 +2,9 @@ import React, { useState, useContext } from 'react';
 import ModuleCard from './ModuleCard';
 import PaginationBar from './PaginationBar'
 import { SavedModulesContext } from './SavedModulesContext';
-import useFetchMods from './useFetchMods';
+// import useFetchMods from './useFetchMods';
 import { Link } from 'react-router-dom';
+import data from './data';
 
 export default function SavedModuleList() {
 
@@ -18,7 +19,10 @@ export default function SavedModuleList() {
     });
 
     // fetch data
-    const { mods, isLoading, Error } = useFetchMods(`https://sussmods.herokuapp.com/modules?${params.toString()}`);
+    // const { mods, isLoading, Error } = useFetchMods(`https://sussmods.herokuapp.com/modules?${params.toString()}`);
+    const mods = data["modules"].filter(mod => 
+        !savedMods.includes(mod.code) 
+    );
 
     // get curr page mods
     const indexOfLastMod = currentPage * modsPerPage;
@@ -28,14 +32,14 @@ export default function SavedModuleList() {
    return (
        <>
            <div className="col-6 modules-container">
-
+{/* 
                {isLoading && 
                 <h2>Loading...</h2>
                 }
 
                 {Error && 
                 <h2>Error. Please try again later.</h2>
-                }
+                } */}
 
                 {currentMods.length > 0 ? (
                     <>
