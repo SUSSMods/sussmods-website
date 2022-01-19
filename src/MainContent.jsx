@@ -4,7 +4,8 @@ import ModuleInfo from './ModuleInfo'
 import SavedModuleList from './SavedModuleList'
 import FilterAccordion from './FilterAccordion'
 import { Routes, Route } from 'react-router-dom';
-import { SavedModulesContext } from './SavedModulesContext';
+// import { SavedModulesContext } from './SavedModulesContext';
+import SavedModulesProvider from './SavedModulesContext';
 
 function MainContent() {
 
@@ -12,7 +13,7 @@ function MainContent() {
 
     return (
         <section className="row main">
-            <SavedModulesContext.Provider value={{savedMods, setSavedMods}}>
+            <SavedModulesProvider value={{savedMods, setSavedMods}}>
                 <Routes>
                     <Route path="/" element={
                         <>
@@ -29,7 +30,7 @@ function MainContent() {
                     <Route path="/module-info/:modCode" element={<ModuleInfo />} />
                     <Route path="/saved-modules" element={<SavedModuleList />} />
                 </Routes>
-            </SavedModulesContext.Provider>
+            </SavedModulesProvider>
         </section>
     )
 }

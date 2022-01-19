@@ -52,6 +52,11 @@ export default function SaveBtn(props) {
         })}, [props, savedMods, btnType.btnText]
     );
 
+    useEffect(() => {
+        localStorage.setItem("savedMods", JSON.stringify(savedMods));
+    }, [savedMods]
+    );
+
     return (
         <>
             <button 
