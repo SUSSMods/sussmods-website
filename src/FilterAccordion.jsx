@@ -1,7 +1,9 @@
 import React from 'react'
 import Accordion from 'react-bootstrap/Accordion'
+// import Accordion from '@mui/material/Accordion'
 import FilterOption from './FilterOption'
 
+// TODO: Replace with api call to generate filters
 import filters from './filters'
 
 export default function FilterAccordion() {
