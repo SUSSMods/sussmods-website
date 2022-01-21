@@ -5,6 +5,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function SaveBtn(props) {
 
+    //TODO: Replace with useReducer hook to manage state of saved mods
+
     const baseBtnClass = "btn add-rm-mod-btn"
 
     const saveBtn = {

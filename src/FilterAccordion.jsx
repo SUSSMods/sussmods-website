@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Accordion from 'react-bootstrap/Accordion'
 // import Accordion from '@mui/material/Accordion'
 import FilterOption from './FilterOption'
+import { FiltersContext } from './FiltersContext'
 
 // TODO: Replace with api call to generate filters
 import filters from './filters'
 
 export default function FilterAccordion() {
+
+    const { dispatch } = useContext(FiltersContext);
 
     return (
         <>
@@ -14,20 +17,25 @@ export default function FilterAccordion() {
                 <div className="accordion">
                     <div id="filter-main-header">
                         <h4>Filter by:</h4>
-                        <a href='#!' className="text-body text-bold">Clear filters</a>
+                        <h4 
+                        onClick={() => dispatch({type: 'CLEAR_FILTERS'})}
+                        id="clear-filters-btn"
+                        className="text-body text-bold">Clear filters</h4>
                     </div>
-                    {filters.map((filter) => (
-                        <Accordion defaultActiveKey={filter.id} 
-                                    key={filter.id}
+                    {filters.map((filterItem) => (
+                        <Accordion defaultActiveKey={filterItem.id} 
+                                    key={filterItem.id}
                                     className="filter-accordion"
                                     >
-                            <Accordion.Item eventKey={filter.id}>
-                                <Accordion.Header className="accordion-header">{filter.header}</Accordion.Header>
+                            <Accordion.Item eventKey={filterItem.id}>
+                                <Accordion.Header className="accordion-header">{filterItem.header}</Accordion.Header>
                                 <Accordion.Body>
 
-                                    {filter.options.map((option) => (
+                                    {filterItem.options.map((option) => (
                                         <FilterOption
-                                            key={option.id}
+                                            key={`${filterItem.id}${option.id}`}
+                                            id={`${filterItem.id}${option.id}`}
+                                            filterHeader={filterItem.header}
                                             optionName={option.name}
                                             optionClass={option.class}
                                         />
