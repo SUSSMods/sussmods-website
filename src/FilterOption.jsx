@@ -5,15 +5,16 @@ import { FiltersContext } from './FiltersContext';
 export default function FilterOption(props) {
 
     const { filters, dispatch } = useContext(FiltersContext);
-    const [isChecked, setIsChecked] = useState(filters.some(filter => filter.id === props.id));
+    const [isChecked, setIsChecked] = useState(false);  
 
     function handleCheck() {
 
         // update context
         const currentFilterItem = {
-            id: props.id,
+            // cast items to list to use avoid list methods errs
+            id: [props.id],
             header: props.filterHeader,
-            option: props.optionName
+            option: [props.optionName]
         };
         
         // if already checked then remove and vice-versa
@@ -23,17 +24,13 @@ export default function FilterOption(props) {
             dispatch({type: 'REMOVE_FILTER', filterItem: currentFilterItem});
         }
 
-        // update checkbox
-        // setIsChecked(!isChecked);
-
     };
 
     useEffect(() => {
-        setIsChecked(filters.some(filter => filter.id === props.id));
-    }, [filters]
-    )
+        // update checkbox
+        setIsChecked(filters.some(filter => filter.id.includes(props.id)))
 
-
+    }, [filters, props.id]);
 
     return (
         <div className={props.optionClass}>
