@@ -437,30 +437,21 @@ a:hover {
   display: flex;
   justify-content: space-between;
   padding: 1rem 1rem 0.5rem;
+  align-items: flex-start;
 }
 
-.accordian-item {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-}
-
-/* rounding bottom corners */
-.accordion-item:last-of-type  {
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-.accordion-button:last-of-type.accordion-button.collapsed {
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+#filter-accordion-main-label {
+  line-height: 140%;
 }
 
 h4.filter-label {
   margin: 0;
 }
 
-#clear-filters-btn:hover {
+#clear-filters-label:hover {
+  text-decoration: underline;
   cursor: pointer;
+  color: #094B70;
 }
 
 .form-check-input[type='checkbox'] {
