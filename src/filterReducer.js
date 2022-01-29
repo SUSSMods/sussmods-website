@@ -22,7 +22,14 @@ const filterReducer = (state, action) => {
                ...state,
                [newHeader] : filterArr.filter(option => 
                 option !== newOption)
-           }
+           };
+
+           // check if all filters disabled, then return to default filters
+           const appliedFilters = [].concat(...Object.values(newState))
+           if (appliedFilters.length < 1) {
+               newState = defaultFilters;
+           };
+
         break;
 
         case 'CLEAR_FILTERS':

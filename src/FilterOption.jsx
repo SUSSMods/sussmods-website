@@ -29,7 +29,6 @@ export default function FilterOption(props) {
 
     useEffect(() => {
         // update checkbox
-        console.log('updated', filters);
         setIsChecked(filters[filterHeader].includes(optionName))
     }, [filters]);
 

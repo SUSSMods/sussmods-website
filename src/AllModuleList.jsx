@@ -16,22 +16,12 @@ export default function AllModuleList() {
     const indexOfLastMod = currentPage * modsPerPage;
     const indexOfFirstMod = indexOfLastMod - modsPerPage;
     
-    // TODO: Refactor for dynamic filter headers
-    // const consolidateFilters = () => {
-    //     return Object.assign({}, ...(filters.map(f => ({ [f.header]: f.option }) )))
-    // }
+    // apply filters
+    const filteredMods = mods
+                        .filter(mod => filters.semOffered.includes(mod.sem.toLowerCase()))
+                        .filter(mod => filters.creditUnits.includes(mod.cu.toString()))
 
-    // const finalFilters = filters.length > 0 ? consolidateFilters() : filters;
-    // console.log('final', finalFilters);
-    // console.log(finalFilters.semOffered);
-    // const filteredMods = filters.length > 0 ?
-    //     mods
-    //     .filter(mod => finalFilters.semOffered.includes(mod.sem))
-    //     .filter(mod => finalFilters.creditUnits.includes(mod.cu))
-    //     : mods
-
-    // const currentMods = filteredMods.slice(indexOfFirstMod, indexOfLastMod)
-    const currentMods = mods.slice(indexOfFirstMod, indexOfLastMod)
+    const currentPageMods = filteredMods.slice(indexOfFirstMod, indexOfLastMod)
     
     return (
         <>
@@ -45,7 +35,7 @@ export default function AllModuleList() {
                 <h2>Error. Please try again later.</h2>
                 }
 
-                 {   currentMods.map(mod => (
+                 {   currentPageMods.map(mod => (
                         <ModuleCard
                         key={mod.id}
                         modCode={mod.code}
@@ -57,7 +47,7 @@ export default function AllModuleList() {
                     ))}
                 
                 <PaginationBar 
-                totalMods={mods.length} 
+                totalMods={filteredMods.length} 
                 modsPerPage={modsPerPage} 
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
