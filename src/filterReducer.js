@@ -1,42 +1,39 @@
+import { defaultFilters } from "./FiltersContext";
+
 const filterReducer = (state, action) => {
 
+    const newOption = action.filterItem.option;
+    const newHeader = action.filterItem.header;
+    const filterArr = state[newHeader];
+    
     let newState;
+
     switch (action.type) {
         case 'ADD_FILTER':
-            newState = [...state, {
-                id: action.filterItem.id,
-                header: action.filterItem.header,
-                option: action.filterItem.option
-            }]
+           if (!filterArr.includes(newOption)) {
+               newState = {
+                    ...state, 
+                    [newHeader] : [...filterArr, newOption] }
+           }
         break;
+
         case 'REMOVE_FILTER':
-            
-            // [0] index as filterItem values are arrs of only 1 item
-            const i = state.findIndex(filter => filter.id.includes(action.filterItem.id[0]))
-            state[i].id = state[i].id.filter(id => id !== action.filterItem.id[0])
-            state[i].option = state[i].option.filter(option => option !== action.filterItem.option[0])
-
-            newState = state;
+           newState = {
+               ...state,
+               [newHeader] : filterArr.filter(option => 
+                option !== newOption)
+           }
         break;
+
         case 'CLEAR_FILTERS':
-            newState = [];
+            newState = defaultFilters;
         break
+        
         default:
-            newState = state
-    }
-
-    // combine all matching filters with same header
-    const finalState = newState.reduce((a, v) => {
-            if (a[v.header]) {
-                a[v.header].id.push(...v.id)
-                a[v.header].option.push(...v.option)
-            } else {
-                a[v.header] = v
-            }
-            return a
-        }, {})
-
-    return Object.values(finalState);
+            newState = state;
+     }
+     
+     return newState;
 
     }
 

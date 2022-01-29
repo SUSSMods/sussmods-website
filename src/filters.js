@@ -12,7 +12,7 @@ const filters = [
 
                 {
                     id: 2,
-                    name: "Jul",
+                    name: "July",
                     class: "sem-offered-check"
                 }
             ]

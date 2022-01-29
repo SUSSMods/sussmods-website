@@ -3,6 +3,7 @@ import Accordion from 'react-bootstrap/Accordion'
 // import Accordion from '@mui/material/Accordion'
 import FilterOption from './FilterOption'
 import { FiltersContext } from './FiltersContext'
+import { camelCase } from 'lodash';
 
 // TODO: Replace with api call to generate filters
 import filters from './filters'
@@ -35,7 +36,7 @@ export default function FilterAccordion() {
                                         <FilterOption
                                             key={`${filterItem.id}${option.id}`}
                                             id={`${filterItem.id}${option.id}`}
-                                            filterHeader={filterItem.header}
+                                            filterHeader={camelCase(filterItem.header)}
                                             optionName={option.name}
                                             optionClass={option.class}
                                         />
