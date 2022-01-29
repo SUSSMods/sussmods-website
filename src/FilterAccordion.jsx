@@ -19,7 +19,7 @@ export default function FilterAccordion() {
                     <div id="filter-main-header">
                         <h4>Filter by:</h4>
                         <h4 
-                        onClick={() => dispatch({type: 'CLEAR_FILTERS'})}
+                        onClick={() => dispatch({type: 'CLEAR_FILTERS', filterItem: {}})}
                         id="clear-filters-btn"
                         className="text-body text-bold">Clear filters</h4>
                     </div>
