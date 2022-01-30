@@ -28,6 +28,7 @@ export default function useFetchMods(url) {
         };
         
         fetchData();
+        // clean up to prevent fetching after navigating away from mod list
         return () => {
             isMounted = false;
         }

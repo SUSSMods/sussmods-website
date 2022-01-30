@@ -6,6 +6,7 @@ const SavedModulesProvider = (props) => {
     const localSavedMods = localStorage.getItem("savedMods");
     const [savedMods, setSavedMods] = useState([]);
 
+    // update savedMods arr
     useEffect(() => {
         if (localSavedMods) {
             setSavedMods(JSON.parse(localSavedMods));
@@ -13,6 +14,7 @@ const SavedModulesProvider = (props) => {
         // eslint-disable-next-line
     }, []);
 
+    // update local storage
     useEffect(() => {
         localStorage.setItem('savedMods', JSON.stringify(savedMods))
         // eslint-disable-next-line

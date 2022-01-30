@@ -1,5 +1,6 @@
 import { defaultFilters } from "./FiltersContext";
 
+//TODO: handle all filters unchecked to mean all filters applied
 const filterReducer = (state, action) => {
   const newOption = action.filterItem.option;
   const newHeader = action.filterItem.header;

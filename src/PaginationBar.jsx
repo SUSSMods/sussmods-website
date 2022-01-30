@@ -1,6 +1,8 @@
 import React from "react";
 import Pagination from "react-bootstrap/Pagination";
 
+//TODO: change pagination bar to mui
+
 export default function PaginationBar(props) {
   const currentPage = props.currentPage;
   const pagesCount = Math.ceil(props.totalMods / props.modsPerPage);
