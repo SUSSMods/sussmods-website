@@ -19,7 +19,7 @@ function ModuleInfo() {
   const { navTitles, setNavTitles } = useContext(NavTitlesContext);
 
   // fetch mod info
-  // FIXME: Module not found error not caught in catch block
+  // TODO: replace mod_info with camel case
   useEffect(() => {
     let isMounted = true;
     const fetchData = async () => {
@@ -31,16 +31,17 @@ function ModuleInfo() {
         if (isMounted) {
           const data = await res.json();
           if (data.mod_info === null) {
+            console.log("found null")
             throw Error("Module not found");
           }
           setmodInfo(data.mod_info);
-          setIsLoading(false);
           setError(null);
+          setIsLoading(false);
         }
       } catch(err) {
-        setIsLoading(false);
         setError(err.message);
-        console.log('err', err.message);
+        console.log(err.message);
+        setIsLoading(false);
       }
     };
 
@@ -60,9 +61,9 @@ function ModuleInfo() {
 
   return (
     <>
-      {isLoading && <h2>Loading...</h2>}
-
       {error && <h2>Module not found</h2>}
+
+      {isLoading && <h2>Loading...</h2>}
 
       {!isLoading && !error && (
         <>
