@@ -1,13 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import ModuleCard from "./ModuleCard";
 import PaginationBar from "./PaginationBar";
 import { SavedModulesContext } from "./SavedModulesContext";
+import { NavTitlesContext } from "./NavTitlesContext";
 import useFetchMods from "./useFetchMods";
 import { Link } from "react-router-dom";
 
 export default function SavedModuleList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [modsPerPage] = useState(10);
+
+  const { setNavTitles } = useContext(NavTitlesContext);
 
   // get saved mods
   const { savedMods } = useContext(SavedModulesContext);
@@ -26,6 +29,13 @@ export default function SavedModuleList() {
   const indexOfFirstMod = indexOfLastMod - modsPerPage;
   const currentMods =
     savedMods.length > 0 ? mods.slice(indexOfFirstMod, indexOfLastMod) : [];
+
+  useEffect(() => {
+    setNavTitles({
+      mainTitle: "Saved Modules",
+      subTitle: null,
+    });
+  }, []);
 
   return (
     <>
