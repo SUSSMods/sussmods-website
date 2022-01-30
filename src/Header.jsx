@@ -1,7 +1,7 @@
 import React from 'react'
 import Heading from './Heading'
 import SearchBar from './SearchBar'
-import modules from './data'
+import modules from './data' // TODO: replace with mod list from api call 
 
 export default function Header() {
 
