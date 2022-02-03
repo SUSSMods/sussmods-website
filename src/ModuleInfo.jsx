@@ -34,9 +34,9 @@ function ModuleInfo() {
             console.log("found null")
             throw Error("Module not found");
           }
-          setmodInfo(data.mod_info);
-          setError(null);
           setIsLoading(false);
+          setError(null);
+          setmodInfo(data.mod_info);
         }
       } catch(err) {
         setError(err.message);

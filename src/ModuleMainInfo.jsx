@@ -20,7 +20,7 @@ function ModuleMainInfo(props) {
                         return <li key={outcome.id} className="lo-item text-body">{outcome.outcomeName}</li>
                     })}
                 </ul>
-
+                    
                 <h4>Textbook</h4>
                 <p className="text-body">{props.modTextbook}</p>
 
