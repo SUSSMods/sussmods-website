@@ -5,7 +5,7 @@ import ModuleMainInfo from "./ModuleMainInfo";
 import ModuleSideInfo from "./ModuleSideInfo";
 import SaveBtn from "./SaveBtn";
 
-function ModuleInfo() {
+export default function ModuleInfo() {
   // get mod code for GET request to API
   const { modCode } = useParams();
   const url = `https://sussmods.herokuapp.com/module-info/${modCode}`;
@@ -31,12 +31,12 @@ function ModuleInfo() {
         if (isMounted) {
           const data = await res.json();
           if (data.mod_info === null) {
-            console.log("found null")
             throw Error("Module not found");
           }
-          setIsLoading(false);
-          setError(null);
+          //WARNING: DO NOT CHANGE ORDER OF STATE UPDATES
           setmodInfo(data.mod_info);
+          setError(null);
+          setIsLoading(false);
         }
       } catch(err) {
         setError(err.message);
@@ -57,7 +57,7 @@ function ModuleInfo() {
       ...navTitles,
       subTitle: modCode,
     });
-  }, []);
+  }, [modCode]);
 
   return (
     <>
@@ -104,5 +104,3 @@ function ModuleInfo() {
     </>
   );
 }
-
-export default ModuleInfo;
