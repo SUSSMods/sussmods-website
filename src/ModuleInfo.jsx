@@ -76,7 +76,7 @@ export default function ModuleInfo() {
             modTextbook={modInfo.textbook}
           />
 
-          <div className="col-2 module-info-side">
+          <div className="col-md-2 module-info-side">
             <ModuleSideInfo
               modCu={modInfo.cu}
               modSem={modInfo.sem}
@@ -86,7 +86,7 @@ export default function ModuleInfo() {
               modTimeTable={modInfo.timeTable}
             />
 
-            <SaveBtn
+          <SaveBtn
             modCode={modCode}
               setShowSaveMsg={setShowSaveMsg}
               btnSize="wide"
