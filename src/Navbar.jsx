@@ -1,6 +1,7 @@
 import React from 'react';
-import NavItem from './NavItem';
 import { Link } from "react-router-dom";
+
+import NavItem from './NavItem';
 import logo from './images/sussmods-logo-secondary.png'
 
 export default function Navbar() {

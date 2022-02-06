@@ -1,70 +1,44 @@
-import React from "react";
-<<<<<<< HEAD
+import React, { useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import NavTitlesProvider from "./NavTitlesContext";
-import Navbar from "./Navbar";
-import Header from "./Header";
-import MainContent from "./MainContent";
-import Footer from "./Footer";
-import "./styles.css";
-
-function App() {
-  return (
-    <>
-      <Router>
-        <NavTitlesProvider>
-          <Navbar />
-          <Header />
-          <MainContent />
-        </NavTitlesProvider>
-      </Router>
-=======
-import Navbar from "./Navbar";
 import MobileNavbar from "./MobileNavbar";
 import SideDrawer from "./SideDrawer";
 import Backdrop from "./Backdrop";
+import Navbar from "./Navbar";
 import Header from "./Header";
 import MainContent from "./MainContent";
 import Footer from "./Footer";
-import { BrowserRouter as Router } from "react-router-dom";
 import "./styles.css";
 
 function App() {
-  state = {
-    SideDrawerOpen: false
+  const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
+
+  const drawerToggleClickHandler = () => {
+    setSideDrawerOpen((prevSideDrawerOpen) => !prevSideDrawerOpen);
   };
 
-  DrawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-      return { SideDrawerOpen: !prevState.SideDrawerOpen };
-    });
+  const backdropClickHandler = () => {
+    setSideDrawerOpen(false);
   };
-
-  BackdropClickHandler = () => {
-    this.setState({ SideDrawerOpen: false });
-  };
-
-  let SideDrawer;
-  let Backdrop;
-
-  if (this.state.SideDrawerOpen) {
-    SideDrawer = <SideDrawer />;
-    Backdrop = <Backdrop click={this.BackdropClickHandler} />;
-  }
 
   return (
     <>
       <div style={{ height: "100%" }}>
         <Router>
-          <Navbar />
-          <MobileNavbar DrawerClickHandler={this.DrawerToggleClickHandler} />
-          {SideDrawer}
-          {Backdrop}
-          <Header />
-          <MainContent />
+          <NavTitlesProvider>
+            <Navbar />
+            <MobileNavbar drawerClickHandler={drawerToggleClickHandler} />
+            {sideDrawerOpen && (
+              <>
+                <SideDrawer click={drawerToggleClickHandler}/>
+                <Backdrop click={backdropClickHandler} />
+              </>
+            )}
+            <Header />
+            <MainContent />
+          </NavTitlesProvider>
         </Router>
       </div>
->>>>>>> responsive-design
       <Footer />
     </>
   );

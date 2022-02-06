@@ -4,12 +4,17 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function SaveBtn(props) {
-  const baseBtnClass = "btn add-rm-mod-btn";
-
   //TODO: Replace with useReducer hook to manage state of saved mods
-
   const baseBtnClass = "btn add-rm-mod-btn";
 
+  const saveBtn = {
+    btnClass: `${baseBtnClass} ${
+      props.btnSize === "wide" ? "btn-lg-icon" : "btn-sm-icon"
+    } primary-btn`,
+    btnText: "Save",
+    btnIcon: <AddIcon />,
+  };
+  
   const removeBtn = {
     btnClass: `${baseBtnClass} ${
       props.btnSize === "wide" ? "btn-lg-icon" : "btn-sm-icon"

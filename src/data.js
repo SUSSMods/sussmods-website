@@ -12,4 +12,4 @@ const modules = [
         {"id":10,"code":"ANL303","name":"ANL303 Fundamentals of Data Mining","cu":5,"sem":"July","desc":"penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor"},
 ]
 
-export default data;
+export default modules;
