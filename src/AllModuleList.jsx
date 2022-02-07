@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import ModuleCard from "./ModuleCard";
 import PaginationBar from "./PaginationBar";
+import MobileFilterButton from "./MobileFilterButton";
 import useFetchMods from "./useFetchMods";
 import { FiltersContext } from "./FiltersContext";
 import { NavTitlesContext } from "./NavTitlesContext";
@@ -8,6 +9,7 @@ import { NavTitlesContext } from "./NavTitlesContext";
 export default function AllModuleList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [modsPerPage] = useState(10);
+  // const [filterModalIsOpen, setFilterModalIsOpen] = useState(false);
   const { filters } = useContext(FiltersContext);
 
   const { mods, isLoading, Error } = useFetchMods(
@@ -51,6 +53,8 @@ export default function AllModuleList() {
             modDesc={mod.desc}
           />
         ))}
+
+        <MobileFilterButton />
 
         <PaginationBar
           totalMods={filteredMods.length}

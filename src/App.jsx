@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+
 import NavTitlesProvider from "./NavTitlesContext";
 import MobileNavbar from "./MobileNavbar";
 import SideDrawer from "./SideDrawer";
@@ -8,6 +9,7 @@ import Navbar from "./Navbar";
 import Header from "./Header";
 import MainContent from "./MainContent";
 import Footer from "./Footer";
+
 import "./styles.css";
 
 function App() {
@@ -30,7 +32,7 @@ function App() {
             <MobileNavbar drawerClickHandler={drawerToggleClickHandler} />
             {sideDrawerOpen && (
               <>
-                <SideDrawer click={drawerToggleClickHandler}/>
+                <SideDrawer click={drawerToggleClickHandler} />
                 <Backdrop click={backdropClickHandler} />
               </>
             )}
