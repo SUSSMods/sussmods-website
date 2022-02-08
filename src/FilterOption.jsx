@@ -31,7 +31,7 @@ export default function FilterOption(props) {
   }, [filters]);
 
   return (
-    <div className={props.optionClass}>
+    <div>
       <Checkbox
         className="form-check-input"
         checked={isChecked}
