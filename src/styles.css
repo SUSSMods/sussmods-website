@@ -110,7 +110,8 @@ a:hover {
 
 .btn-vr-icon {
   height: 3rem;
-  width: max-content;
+  min-width: max-content;
+  width: 75%;
 }
 
 .icon {
@@ -343,7 +344,7 @@ a:hover {
   margin-top: 5rem;
   font-size: 28px; /* Increased text to enable scrolling */
   padding: 0 2.5rem;
-  justify-content: space-between;
+  column-gap: 3rem;
 }
 
 .modules-container {
@@ -462,8 +463,10 @@ a:hover {
 /* filters */
 
 .filter-container {
-  margin: 0 auto 0 3rem;
+  /* margin: 0 auto 0 3rem; */
+  background-color: #fff;
   min-width: max-content;
+  max-width: fit-content;
 }
 
 @media (max-width: 768px) {
@@ -635,4 +638,19 @@ h4.filter-label {
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
   z-index: 100;
+}
+
+/* mobile filter btn */
+#mobile-filter-fab {
+  background-color: #003b5c;
+  color:#fff;
+}
+
+#filter-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-between; */
+  row-gap: 1rem;
+  background-color: #c9c9c9;
 }

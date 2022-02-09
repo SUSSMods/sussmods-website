@@ -68,7 +68,7 @@ export default function FilterAccordion() {
       </div>
 
       {filters.map((filterItem) => (
-        <Accordion key={filterItem.id}>
+        <Accordion key={filterItem.id} defaultExpanded>
           <AccordionSummary>{filterItem.header}</AccordionSummary>
 
           <AccordionDetails>
@@ -78,7 +78,6 @@ export default function FilterAccordion() {
                 id={`${filterItem.id}${option.id}`}
                 filterHeader={camelCase(filterItem.header)}
                 optionName={option.name}
-                optionClass={option.class} //remove
               />
             ))}
           </AccordionDetails>
