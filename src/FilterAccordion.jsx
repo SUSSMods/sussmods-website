@@ -11,6 +11,7 @@ import { styled } from "@mui/material/styles";
 import filters from "./filters";
 
 // TODO: move to separate components
+// TODO: create mobile version of accordion without header
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
