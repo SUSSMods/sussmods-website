@@ -11,7 +11,6 @@ import { styled } from "@mui/material/styles";
 import filters from "./filters";
 
 // TODO: move to separate components
-// TODO: create mobile version of accordion without header
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -52,21 +51,27 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-export default function FilterAccordion() {
+export default function FilterAccordion(props) {
   const { dispatch } = useContext(FiltersContext);
 
+  const filterContainerClass = !props.isMobile
+    ? "col-2 filter-container"
+    : "mobile-filter-container";
+
   return (
-    <div className="col-2 filter-container">
-      <div id="filter-main-header">
-        <h4 id="filter-accordion-main-label">Filter by:</h4>
-        <h4
-          onClick={() => dispatch({ type: "CLEAR_FILTERS", filterItem: {} })}
-          id="clear-filters-label"
-          className="text-body text-bold"
-        >
-          Clear filters
-        </h4>
-      </div>
+    <div className={filterContainerClass}>
+      {!props.isMobile && (
+        <div id="filter-main-header">
+          <h4 id="filter-accordion-main-label">Filter by:</h4>
+          <h4
+            onClick={() => dispatch({ type: "CLEAR_FILTERS", filterItem: {} })}
+            id="clear-filters-label"
+            className="text-body text-bold"
+          >
+            Clear filters
+          </h4>
+        </div>
+      )}
 
       {filters.map((filterItem) => (
         <Accordion key={filterItem.id} defaultExpanded>
