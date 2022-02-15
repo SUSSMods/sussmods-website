@@ -646,8 +646,19 @@ h4.filter-label {
 
 /* mobile filter btn */
 #mobile-filter-fab {
-  background-color: #003b5c;
-  color:#fff;
+  display: none;
+  background-color: #c5dcfa;
+  /* color:#fff; */
+  color: #003b5c;
+  bottom: 5vh;
+  right: 5vw;
+}
+
+@media (max-width: 768px) {
+  #mobile-filter-fab {
+    display: block;
+    position: fixed;
+  }
 }
 
 #filter-modal {
