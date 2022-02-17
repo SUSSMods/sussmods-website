@@ -16,18 +16,18 @@ const Accordion = styled((props) => (
 ))(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
   "&:not(:last-child)": {
-    borderBottom: 0,
+    borderBottom: 0
   },
   "&:last-child": {
-    borderRadius: "0px 0px 8px 8px",
+    borderRadius: "0px 0px 8px 8px"
   },
   "&:before": {
-    display: "none",
+    display: "none"
   },
   "& .Mui-expanded": {
     backgroundColor: "#c5dcfa",
-    color: "#003b5c",
-  },
+    color: "#003b5c"
+  }
 }));
 
 const AccordionSummary = styled((props) => (
@@ -38,17 +38,17 @@ const AccordionSummary = styled((props) => (
 ))(({ theme }) => ({
   flexDirection: "row-reverse",
   "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
-    transform: "rotate(90deg)",
+    transform: "rotate(90deg)"
   },
   "& .MuiAccordionSummary-content": {
     marginLeft: theme.spacing(1),
-    fontSize: "1rem",
-  },
+    fontSize: "1rem"
+  }
 }));
 
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
-  borderTop: "1px solid rgba(0, 0, 0, .125)",
+  borderTop: "1px solid rgba(0, 0, 0, .125)"
 }));
 
 export default function FilterAccordion() {

@@ -33,13 +33,13 @@ export default function SavedModuleList() {
   useEffect(() => {
     setNavTitles({
       mainTitle: "Saved Modules",
-      subTitle: null,
+      subTitle: null
     });
   }, []);
 
   return (
     <>
-      <div className="col-6 modules-container">
+      <div className="col-md-9 modules-container">
         {isLoading && <h2>Loading...</h2>}
 
         {Error && <h2>Error. Please try again later.</h2>}
