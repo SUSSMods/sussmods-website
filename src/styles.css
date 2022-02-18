@@ -201,6 +201,12 @@ a:hover {
   padding-top: 2.5rem;
 }
 
+@media (max-width: 768px) {
+  .sidenav {
+    display: none;
+  }
+}
+
 .sussmods-logo {
   display: block;
   width: 75%;
@@ -210,8 +216,10 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-  .sidenav {
-    display: none;
+  .sussmods-logo {
+    max-height: 40px;
+    width: 180px;
+    margin: auto 40px;
   }
 }
 
