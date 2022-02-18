@@ -476,6 +476,10 @@ a:hover {
   }
 }
 
+.mobile-filter-container {
+  width: 100%;
+}
+
 #filter-main-header {
   border: 1px solid #ddd;
   border-top-left-radius: 8px;
@@ -648,15 +652,49 @@ h4.filter-label {
 
 /* mobile filter btn */
 #mobile-filter-fab {
-  background-color: #003b5c;
-  color: #fff;
+  display: none;
+  background-color: #c5dcfa;
+  /* color:#fff; */
+  color: #003b5c;
+  bottom: 5vh;
+  right: 5vw;
+}
+
+@media (max-width: 768px) {
+  #mobile-filter-fab {
+    display: block;
+    position: fixed;
+  }
 }
 
 #filter-modal {
+  inset: 0 !important;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-between; */
   row-gap: 1rem;
-  background-color: #c9c9c9;
+  background-color: #dfdfdf;
+  height: 100%;
+  width: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0px !important;
+  z-index: 100;
+}
+
+.ReactModal__Overlay {
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 500ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+  transform: translateY(100px);
 }
