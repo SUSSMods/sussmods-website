@@ -32,13 +32,13 @@ export default function AllModuleList() {
   useEffect(() => {
     setNavTitles({
       mainTitle: "All Modules",
-      subTitle: null,
+      subTitle: null
     });
   }, []);
 
   return (
     <>
-      <div className="col-md-7 modules-container">
+      <div className="col-md-6 modules-container">
         {isLoading && <h2>Loading...</h2>}
 
         {Error && <h2>Error. Please try again later.</h2>}

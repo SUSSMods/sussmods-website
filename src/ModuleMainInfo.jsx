@@ -2,7 +2,7 @@ import React from "react";
 
 function ModuleMainInfo(props) {
   return (
-    <div className="col-md-7 module-detail-container">
+    <div className="col-md-6 module-detail-container">
       <h1 className="module-detail-title">{props.modName}</h1>
       <h4>Synopsis</h4>
       <p className="module-detail-desc text-body">{props.modDesc}</p>
@@ -18,15 +18,19 @@ function ModuleMainInfo(props) {
         })}
       </ul>
 
-                <h4>Learning Outcomes</h4>
-                <ul className="lo-list">
-                    {props.modOutcomes.map(outcome => {
-                        return <li key={outcome.id} className="lo-item text-body">{outcome.outcomeName}</li>
-                    })}
-                </ul>
-                    
-                <h4>Textbook</h4>
-                <p className="text-body">{props.modTextbook}</p>
+      <h4>Learning Outcomes</h4>
+      <ul className="lo-list">
+        {props.modOutcomes.map((outcome) => {
+          return (
+            <li key={outcome.id} className="lo-item text-body">
+              {outcome.outcomeName}
+            </li>
+          );
+        })}
+      </ul>
+
+      <h4>Textbook</h4>
+      <p className="text-body">{props.modTextbook}</p>
 
       <button className="btn secondary-btn btn-vr-icon">
         <i className="fas fa-download icon"></i>
