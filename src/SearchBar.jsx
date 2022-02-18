@@ -20,7 +20,7 @@ export default function SearchBar({ data }) {
   useEffect(() => {
     if (searchSubmit) {
       console.log("navigating to", searchInput);
-      const searchModCode = searchInput.toUpperCase().split(" ")[0];
+      const searchModCode = searchInput.toUpperCase().split(" ")[0];    
       navigate(`/module-info/${searchModCode}`);
       setSearchSubmit(false);
     }
