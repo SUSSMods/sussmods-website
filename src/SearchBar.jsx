@@ -33,7 +33,7 @@ export default function SearchBar({ data }) {
         id="search-bar"
         freeSolo
         options={mods}
-        sx={{ width: 300 }}
+        // sx={{ width: 300 }}
         value={searchInput}
         onInputChange={(e, v) => setSearchInput(v)}
         renderInput={(params) => (
