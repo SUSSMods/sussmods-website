@@ -191,8 +191,7 @@ a:hover {
   align-items: center;
   background-color: #003b5c;
   height: 100%;
-  max-width: 25%;
-  min-width: 25%;
+  max-width: 200px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -256,7 +255,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 25%; /* Same width of the sidenav */
+  margin-left: 200px; /* Same width of the sidenav */
   padding: 0 1.5rem;
   border-bottom: 1px solid #ddd;
   min-height: 6rem;
@@ -349,7 +348,7 @@ a:hover {
 /* main content */
 
 .main {
-  margin-left: 25%; /*Same as the width of the sidenav */
+  margin-left: 200px; /*Same as the width of the sidenav */
   margin-top: 2rem;
   font-size: 28px; /* Increased text to enable scrolling */
   padding: 0 1.5rem;
@@ -448,7 +447,7 @@ a:hover {
 
 .footer {
   float: bottom;
-  margin-left: 25%; /* Same as the width of the sidenav */
+  margin-left: 200px; /* Same as the width of the sidenav */
   padding: 25px 25px 10px 25px;
 }
 
