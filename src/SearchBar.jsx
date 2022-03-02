@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Autocomplete, TextField } from "@mui/material";
 
-export default function SearchBar({ data }) {
+export default function SearchBar(props) {
   const [searchInput, setSearchInput] = useState("");
   const [searchSubmit, setSearchSubmit] = useState(false);
 
   let navigate = useNavigate();
 
-  const mods = data.map((mod) => mod.name);
+  const mods = props.data.map((mod) => mod.name);
 
   function handleSearchSubmit(e) {
     if (e.key === "Enter") {
@@ -27,7 +27,7 @@ export default function SearchBar({ data }) {
   }, [searchSubmit]);
 
   return (
-    <div className="search">
+    <div className={props.className}>
       <Autocomplete
         disablePortal
         id="search-bar"
