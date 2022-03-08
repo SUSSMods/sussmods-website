@@ -2,8 +2,9 @@ import React from "react";
 
 function ModuleMainInfo(props) {
   return (
-    <div className="col-md-6 module-detail-container">
-      <h1 className="module-detail-title">{props.modName}</h1>
+    // <div className="col-md-6 module-detail-container">
+    <>
+      {/* <h1 className="module-detail-title">{props.modName}</h1> */}
       <h4>Synopsis</h4>
       <p className="module-detail-desc text-body">{props.modDesc}</p>
 
@@ -32,11 +33,11 @@ function ModuleMainInfo(props) {
       <h4>Textbook</h4>
       <p className="text-body">{props.modTextbook}</p>
 
-      <button className="btn secondary-btn btn-vr-icon">
+      <button className="btn secondary-btn btn-vr-icon download-btn">
         <i className="fas fa-download icon"></i>
         Download PDF
       </button>
-    </div>
+    </>
   );
 }
 

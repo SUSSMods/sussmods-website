@@ -5,6 +5,8 @@ import ModuleMainInfo from "./ModuleMainInfo";
 import ModuleSideInfo from "./ModuleSideInfo";
 import SaveBtn from "./SaveBtn";
 
+//TODO: Move side info to top in mobile
+
 export default function ModuleInfo() {
   // get mod code for GET request to API
   const { modCode } = useParams();
@@ -18,12 +20,16 @@ export default function ModuleInfo() {
 
   const { navTitles, setNavTitles } = useContext(NavTitlesContext);
 
+  //TODO: Remove duplication with react-responsive
+  const [width, setWidth] = useState(window.innerWidth);
+  const breakpoint = 768;
+
   // fetch mod info
   // TODO: replace mod_info with camel case
   useEffect(() => {
     let isMounted = true;
     const fetchData = async () => {
-      try { 
+      try {
         const res = await fetch(url);
         if (!res.ok) {
           throw Error("Unable to request data for this resource");
@@ -38,7 +44,7 @@ export default function ModuleInfo() {
           setError(null);
           setIsLoading(false);
         }
-      } catch(err) {
+      } catch (err) {
         setError(err.message);
         console.log(err.message);
         setIsLoading(false);
@@ -59,22 +65,36 @@ export default function ModuleInfo() {
     });
   }, [modCode]);
 
+  useEffect(() => {
+    const handleResizeWindow = () => setWidth(window.innerWidth);
+    // subscribe to window resize event "onComponentDidMount"
+    window.addEventListener("resize", handleResizeWindow);
+    return () => {
+      // unsubscribe "onComponentDestroy"
+      window.removeEventListener("resize", handleResizeWindow);
+    };
+  }, []);
+
   return (
     <>
       {error && <h2>Module not found</h2>}
 
       {isLoading && <h2>Loading...</h2>}
 
-      {!isLoading && !error && (
+      {!isLoading && !error && width > breakpoint && (
         <>
-          <ModuleMainInfo
-            modName={modInfo.name}
-            modCode={modInfo.code}
-            modDesc={modInfo.desc}
-            modTopics={modInfo.topics}
-            modOutcomes={modInfo.learningOutcomes}
-            modTextbook={modInfo.textbook}
-          />
+          <div className="col-md-6 module-detail-container">
+            <h1 className="module-detail-title">{modInfo.name}</h1>
+
+            <ModuleMainInfo
+              // modName={modInfo.name}
+              modCode={modInfo.code}
+              modDesc={modInfo.desc}
+              modTopics={modInfo.topics}
+              modOutcomes={modInfo.learningOutcomes}
+              modTextbook={modInfo.textbook}
+            />
+          </div>
 
           <div className="col-md-2 module-info-side">
             <ModuleSideInfo
@@ -86,8 +106,47 @@ export default function ModuleInfo() {
               modTimeTable={modInfo.timeTable}
             />
 
-          <SaveBtn
-            modCode={modCode}
+            <SaveBtn
+              modCode={modCode}
+              setShowSaveMsg={setShowSaveMsg}
+              btnSize="wide"
+            />
+
+            {showSaveMsg && (
+              <small className="saved-removed-text">
+                {modCode} has been saved. View saved modules{" "}
+                <Link to="/saved-modules">here.</Link>
+              </small>
+            )}
+          </div>
+        </>
+      )}
+
+      {!isLoading && !error && width <= breakpoint && (
+        <>
+          <div className="col-md-6 module-detail-container">
+            <h1 className="module-detail-title">{modInfo.name}</h1>
+
+            <ModuleSideInfo
+              modCu={modInfo.cu}
+              modSem={modInfo.sem}
+              modLevel={modInfo.level}
+              modPrereqs={modInfo.prerequisites}
+              modLang={modInfo.language}
+              modTimeTable={modInfo.timeTable}
+            />
+
+            <ModuleMainInfo
+              // modName={modInfo.name}
+              modCode={modInfo.code}
+              modDesc={modInfo.desc}
+              modTopics={modInfo.topics}
+              modOutcomes={modInfo.learningOutcomes}
+              modTextbook={modInfo.textbook}
+            />
+
+            <SaveBtn
+              modCode={modCode}
               setShowSaveMsg={setShowSaveMsg}
               btnSize="wide"
             />

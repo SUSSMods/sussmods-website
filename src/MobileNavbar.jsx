@@ -9,6 +9,7 @@ import SearchBar from "./SearchBar";
 import modules from "./data"; // TODO: replace with mod list from api call
 
 export default function MobileNavbar(props) {
+  //TODO: Remove duplication with react-responsive
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 768;
 
