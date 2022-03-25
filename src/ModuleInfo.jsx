@@ -5,8 +5,6 @@ import ModuleMainInfo from "./ModuleMainInfo";
 import ModuleSideInfo from "./ModuleSideInfo";
 import SaveBtn from "./SaveBtn";
 
-//TODO: Move side info to top in mobile
-
 export default function ModuleInfo() {
   // get mod code for GET request to API
   const { modCode } = useParams();
@@ -22,7 +20,7 @@ export default function ModuleInfo() {
 
   //TODO: Remove duplication with react-responsive
   const [width, setWidth] = useState(window.innerWidth);
-  const breakpoint = 768;
+  const breakpoint = 1045;
 
   // fetch mod info
   // TODO: replace mod_info with camel case
