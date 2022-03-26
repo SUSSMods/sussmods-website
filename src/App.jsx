@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 
 import NavTitlesProvider from "./NavTitlesContext";
 import MobileNavbar from "./MobileNavbar";
@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <div style={{ height: "100%" }}>
-        <Router>
+        <Router basename="/">
           <NavTitlesProvider>
             <Navbar />
             <MobileNavbar drawerClickHandler={drawerToggleClickHandler} />
