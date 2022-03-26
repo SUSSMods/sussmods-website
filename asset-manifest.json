@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/sussmods-website/static/css/main.9a2441bf.css",
-    "main.js": "/sussmods-website/static/js/main.66d0be26.js",
+    "main.js": "/sussmods-website/static/js/main.40d26438.js",
     "static/media/sussmods-logo-secondary.png": "/sussmods-website/static/media/sussmods-logo-secondary.d946e52d5a7c8949cfe0.png",
     "index.html": "/sussmods-website/index.html",
     "main.9a2441bf.css.map": "/sussmods-website/static/css/main.9a2441bf.css.map",
-    "main.66d0be26.js.map": "/sussmods-website/static/js/main.66d0be26.js.map"
+    "main.40d26438.js.map": "/sussmods-website/static/js/main.40d26438.js.map"
   },
   "entrypoints": [
     "static/css/main.9a2441bf.css",
-    "static/js/main.66d0be26.js"
+    "static/js/main.40d26438.js"
   ]
 }
